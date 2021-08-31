@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+{% load static %}<!--静的ファイルのロード-->
+
+
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                <p>published: {{ post.published_date }}</p>
+            </div>
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <!--post_detailの部分は、Djangoがblog/urls.pyに書かれた name=post_detail のURLを待ち受けることを表しています。-->
+            <!--そしてpk=post.pkについてはどうでしょうか？ pkはプライマリキーの略で、データベースの各レコードのユニークな名前です。 
+            Postモデルでプライマリキーを指定しなかったので、Djangoは私たちのために1つのキーを作成し
+            （デフォルトでは、各レコードごとに1ずつ増える数字で、たとえば1、2、3です）、各投稿にpkというフィールド名で追加します。 
+            Postオブジェクトの他のフィールド（title、authorなど）にアクセスするのと同じ方法で、post.pkと書くことによってプライマリキーにアクセスします！-->
+            <p>{{ post.text|linebreaksbr }}</p>
+            <!--<a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a> #extension#post.comments -->
+            <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a><!--#extension#post.comments-->
+        </div>
+    {% endfor %}
+{% endblock %}

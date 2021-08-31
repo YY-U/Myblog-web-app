@@ -1,0 +1,72 @@
+{% load static %}<!--静的ファイルのロード-->
+<html>
+    <head>
+        <title>YY's blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <!--Bootstrap（：webサイト開発のためのhtml,cssフレームワーク）のインストール-->
+        <!--あなたのプロジェクトにファイルを追加しているわけではありません。インターネット上にあるファイルを指しているだけ-->
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    </head>
+<body>
+    <div class="page-header">
+        {% if user.is_authenticated %}
+             <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+             <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+             <!--#8/11#extension1#↑の一行追加-->
+             <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+             <!--#8/12#extension2#↑の一行追加-->
+        {% else %}<!--#8/12#extension2#-->
+             <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+        {% endif %}
+             <h1><a href="/">YY's Blog</a></h1>
+    </div>
+
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<!--
+<h1>ヘッダー</h1> 最も重要性の高い見出し
+<h2>サブのヘッダー</h2> その次のレベルの見出し
+<h3>サブのサブのヘッダー</h3>... など<h6>まで
+<p>文章の段落</p>
+<em>文章</em>で文章を強調する
+<strong>文章</strong>でさらに文章を強調する
+<br>は改行(brタグの中には何も書いてはいけません。閉じタグも無しです)
+<a href="https://djangogirls.org">リンク</a> はリンクを生成します
+<ul><li>第１の項目</li><li>第２の項目</li></ul> でリストを作成する、こんな感じに！
+<div></div>はページ内のセクションを定義
+-->
+
+
+<!-- 
+静的ファイルとは、CSSファイルや画像ファイルといった、動的な変更が発生しないファイルのことです。 
+そのため、これらのファイルはリクエストに依存せず、どのユーザに対しても中身は同じになります。
+-->
+<!--
+Djangoは、全てのアプリのフォルダ内の "static" と名づけられた全てのフォルダを自動的に探して、
+その中身を静的ファイルとして使えるようにします。
+-->
+
+
+<!--|linebreaksbr はpostのテキスト中の改行を段落に変換するフィルタに通すという意味です。-->
+<!--
+{% for post in posts %}
+    <div class="post">
+        <p>published: {{ post.published_date }}</p>
+        <h2><a href="">{{ post.title }}</a></h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+        |linebreaksbr はpostのテキスト中の改行を段落に変換するフィルタに通すという意味です。
+    </div>
+{% endfor %}
+-->
