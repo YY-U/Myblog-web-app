@@ -79,12 +79,27 @@ WSGI_APPLICATION = 'djangogirls.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': str(BASE_DIR / 'db.sqlite3'),
+    }
+}
+
+#変更後↑#9/2 extension pythonanywhere 手動デプロイ 
+#TypeError: argument of type 'PosixPath' is not iterable
+
+#変更前↓
+
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+"""
 
 
 # Password validation
