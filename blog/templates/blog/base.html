@@ -6,13 +6,19 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <!--Bootstrap（：webサイト開発のためのhtml,cssフレームワーク）のインストール-->
         <!--あなたのプロジェクトにファイルを追加しているわけではありません。インターネット上にあるファイルを指しているだけ-->
+        <!--<link rel="xxx" href="....">-->
+        <!--href:hypertext reference,目当ての資源の所在を指し示す-->
+        <!--rel:hrefで指定したページの意味合いを定義-->
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
         <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
     </head>
 <body>
     <div class="page-header">
         {% if user.is_authenticated %}
+             <!--aタグ：リンクタグでありbody内で使用．訪問者にリンク先を知らせるために使用．-->
              <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+             <!--aタグにclass(id)名をつけ、CSSでそのclass(id)名に対してデザインを指定-->
+             <!--ex. htmlコード内にて：<a class="noline" href="~">，cssコード内にて：.noline{.....}-->
              <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
              <!--#8/11#extension1#↑の一行追加-->
              <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>

@@ -17,20 +17,54 @@ body {
     padding-left: 15px;
 }
 */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*body {
+    margin: 0;
+    padding: 0;
+}*/
+
 .page-header {
-    background-color: #C25100;
-    margin-top: 0;
+    /*background-color: #C25100;*/
+    /*background-color: #000000;*/
+    /*background-color: #6e6e6e;*/
+    background-color: #1c2130;
+    /*margin-top: 0;*/
+    margin: 0;
     padding: 20px 20px 20px 40px;
+    padding: 20px 0px 20px 40px;
+    /* ↑, →, ↓, ← */
+    /*padding: 0;*/
 }
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
-    color: #ffffff;
-    font-size: 36pt;
+    /*color: #ffffff;*/
+    color: #adc0ff;
+    font-size: 40pt;
+    /*font-size: 26pt;*/
     text-decoration: none;
 }
 
+
+/*https://allabout.co.jp/gm/gc/23796/*/
+/*↑余白に関して*/
+
 .content {
-    margin-left: 40px;
+    /*background-color: #6e6e6e;*//**/
+    /*background-color: #1c2130;*/
+    background-color: #53596d;
+
+    /*margin-left: 40px;*/
+    /*margin-left: 0px;*/
+    /*margin-top: 0;*/
+    margin: 0;
+    /*padding: 20px 20px 20px 40px;*/
+    /*padding: 100%:*/
+    width: 100%;/*これによりcontent右となりの謎余白を削除することができた*/
 }
 
 h1, h2, h3, h4 {
@@ -38,7 +72,12 @@ h1, h2, h3, h4 {
 }
 
 .date {
+    padding-top: 30px;
     color: #828282;
+    
+
+    /*margin: 0;
+    padding: 0;*/
 }
 
 .save {
@@ -46,24 +85,41 @@ h1, h2, h3, h4 {
 }
 
 .post-form textarea, .post-form input {
+    /*background-color: #6e6e6e;*/
     width: 100%;
 }
 
 .top-menu, .top-menu:hover, .top-menu:visited {
     color: #ffffff;
+    /*color: #000000;*/
+    /*background-color: #6e6e6e;*//**/
     float: right;
+    /*clear: right;*/
+    /*float: left;*/
     font-size: 26pt;
     margin-right: 20px;
+    /*margin-right: 0;*/
+    /*margin: 0;*/
 }
 
 .post {
+    /*background-color: #6e6e6e;*//**/
     margin-bottom: 70px;
+    /*color: #a3b2db;*/
+    color: #adc0ff;
+    /*margin-bottom: 0;*/
 }
 
 .post h2 a, .post h2 a:visited {
-    color: #000000;
+    /*color: #000000;*/
+    color: #adc0ff;
+    /*color: #ffffff;*/
 }
 
 .comment {
     margin: 20px 0px 20px 20px;
+    /*margin: 20px 0px 20px 20px;*/
+    /*margin-bottom: 0;*/
+    height: 100%;/*コメントしたの余白を解消*/
+    color: #adc0ff;
 }
